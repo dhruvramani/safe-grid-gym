@@ -134,7 +134,7 @@ class GridworldEnv(gym.Env):
         self.np_random, seed = seeding.np_random(seed)
         return [seed]
 
-    def render(self, mode="human", state=None, return_=None):
+    def render(self, mode="human", state=None, return_=-1):
         """ Implements the gym render modes "rgb_array", "ansi" and "human".
 
         - "rgb_array" just passes through the RGB array provided by pycolab in each state
@@ -162,12 +162,12 @@ class GridworldEnv(gym.Env):
         elif mode == "human":
             if self._viewer is None:
                 self._viewer = init_viewer(self._env_name, self._render_animation_delay)
-                if(state == None or return_ == None):
+                if(return_ == -1):
                     self._viewer.display(self._env)
                 else:
                     self._viewer.display_state(state, return_)
             else:
-                if(state == None or return_ == None):
+                if(return_ == -1):
                     self._viewer.display(self._env)
                 else:
                     self._viewer.display_state(state, return_)
