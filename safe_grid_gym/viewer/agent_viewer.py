@@ -92,6 +92,26 @@ class AgentViewer(object):
         except:
             curses.endwin()
 
+    def display_state(self, board, return_):
+        """
+    Args:
+      env: ai_safety_gridworlds.environments.shared.safety_game.SafetyEnvironment.
+          An instance of SafetyEnvironment which contains observations (or boards)
+          and returns.
+    """
+        # Time cost is not always a good indicator for performance evaluation.
+        # Other indicators, such as number of episodes, might be more suitable.
+        # Neverthelesss, only elapsed time is displayed, while support of
+        # additional information should be done by the consumer of AgentViewer.
+        elapsed = self._get_elapsed()
+        try:
+            display(self._screen, board, return_, elapsed, self._colour_pair)
+            self._do_pause()
+            if self._pause is not None:
+                time.sleep(self._pause)
+        except:
+            curses.endwin()
+
     def reset_time(self):
         self._start_time = time.time()
         self._pause_cnt = 0
