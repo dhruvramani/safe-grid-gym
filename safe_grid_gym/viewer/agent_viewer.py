@@ -245,8 +245,8 @@ def char2ord_4_colormap(colour):
 
 
 def init_curses(screen, color_bg, color_fg, delay=None):
-    logger = get_logger()
-    logger.info("init_curses...")
+    #logger = get_logger()
+    #logger.info("init_curses...")
     # If the terminal supports colour, program the colours into curses as
     # "colour pairs". Update our dict mapping characters to colour pairs.
     colour_pair = init_colour(color_bg, color_fg)
@@ -256,7 +256,7 @@ def init_curses(screen, color_bg, color_fg, delay=None):
     else:
         screen.timeout(delay)  # Nonblocking (if 0) or timing-out reads
 
-    logger.info("init_curses success.")
+    #logger.info("init_curses success.")
     return colour_pair
 
 
@@ -270,7 +270,7 @@ def ts2str(ts_delta):
 # --------
 _logger = None
 
-
+'''
 def get_logger():
     """
   singleton
@@ -285,3 +285,4 @@ def get_logger():
         _logger.setLevel(logging.DEBUG)
 
     return _logger
+'''
